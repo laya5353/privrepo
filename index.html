@@ -1,0 +1,199 @@
+<!DOCTYPE html> 
+<html> 
+<!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
+ 
+THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
+ 
+ 
+Authors in chronological order of contribution:
+Tim Riedel
+Laya Kumar
+
+Further Information:
+http://diystream.cns.utexas.edu/
+
+Research Educator:
+Timothy Riedel
+triedel@utexas.edu
+ 
+Brief Description of Goal of Code:
+This code should be used to help user determine if their symptoms are more indicative of stress or anxiety disorder. 
+ 
+Known Issues:
+No button to take users back to the start of the survey. 
+-->
+
+   <head> 
+      <title>Stress or Anxiety?</title>  <!--title name-->
+      <meta name="viewport" content="width=device-width, initial-scale=1"> <!--width and scale-->
+      <meta name="apple-mobile-web-app-capable" content="yes"> <!--accessible on apple mobile-->
+      <link rel="stylesheet" href="w3.css"> <!--style formatting-->
+      <link rel="stylesheet" href="w3-colors-flat.css"> <!--color formatting-->
+   </head> 
+
+
+<script> //start javascript
+	var anxiety_count = 0; //initialized number of anxiety symptoms to 0
+   	var stress_count = 0; //initialized number of stress symptoms to 0
+
+        function anxietyAdd(){ //function for anxiety symptom counting
+            anxiety_count = anxiety_count + 1; //adds one to anxiety count everytime a button correlating to anxiety symptoms is clicked
+
+        }
+
+        function stressAdd(){ //function for stress symptom counting
+            stress_count = stress_count + 1; //adds one to stress count every time a button correlating to stress symptoms is clicked
+        }
+	
+	function percentageResult(){ //function to create results in percentage form
+		var anxietyPercent = anxiety_count / 4 * 100; //calculates percentage of anxiety symptoms based on anxiety count variable
+		var stressPercent = stress_count / 4 * 100; //calculate percentage of stress symptoms based on stress count variable
+		var resultText = document.getElementById("resultsopen"); //added variable to show results
+		resultText.innerHTML = "Probability it is an anxiety disorder = " + anxietyPercent + "% <br> Probability it is stress = " + stressPercent + "%"; 
+		//added inner HTML command to show probabilities of stress and anxiety
+	
+// The following code lets you know when the file was last modified.
+// This will help you know if you are looking at the new version of the file or if there is a delay on GitHub.
+       var docMod = document.lastModified;
+       console.log("This file last modified  " + docMod);
+// commented out alert box that shows last modification time and date
+
+
+	
+	}
+	
+
+  </script>
+
+
+<!--start of code for page layout-->
+<style> 
+.body { 
+     margin: 0em;
+}
+
+.page { 
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+} 
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+	
+   img, object{ 
+   max-height:90%;
+   max-width:90%;
+   /*changes image dimensions to fit screen*/
+       }
+	
+</style> <!--end of style code-->
+
+<body> <!--body of code-->
+<div id="header" class="w3-container w3-flat-carrot"> <!--orange header box-->
+	<h1>Anxiety Disorder or Stress?</h1> <!--display heading-->
+</div> <!--end of header-->
+	
+<div id="content" class="w3-container"> <!--white background for page-->
+	<p>Stress and anxiety disorders have very similar symptoms. If you'd like to know whether your symptoms are from stress or an underlying anxiety disorder, answer some questions to find out.</p> <!--Text on white page-->
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a> <!--Text on white page-->
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p> <!--text on white page-->
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p> <!--text on white page-->
+	
+	<img src="https://www.cedars-sinai.org/content/dam/cedars-sinai/blog/2019/07/common-physical-symptoms-of-hidden-stress.jpg" alt="http://www.bettspsychiatric.com/wp-content/uploads/2018/01/betts-web-banner-mobile-anxiety.jpg"> <!--image inserted-->
+
+<div class="page" id="one"> <!--new page for question 1-->
+	<div id="header" class="w3-container w3-flat-carrot"> <!--orange header box-->
+		<h1>Question 1</h1> <!--display heading-->
+	</div> <!--end of header-->
+	
+	<div id="content" class="w3-container"> <!--white background for page-->
+		<p>Do you suffer from panic attacks?</p> <!--question text on white page-->
+		<a href="#two"  onclick="anxietyAdd();" class="w3-btn w3-black"> Yes</a> <!--adds 1 to anxiety count when clicked and goes to page two-->
+        	<a href="#two"  onclick="stressAdd();" class="w3-btn w3-black">No</a> <!--adds 1 to stress count when clicked and goes to page two-->
+	</div> <!--divides page-->
+
+    	</div> <!--divides page-->
+</div> <!--divides page-->
+
+<div class="page" id="two"> <!--new page for question 2-->
+	<div class="w3-container w3-flat-carrot"> <!--orange header box-->
+		<h1>Question 2</h1> <!--display heading-->
+		<!--Added question two-->
+	</div> <!--end of header-->
+	
+	<div id="content" class="w3-container"> <!--white background for page-->
+	<p>Does your stress/anxiety interfere with your ability to function normally?</p> <!--question text on white page-->
+	<a href="#three"  onclick="anxietyAdd();" class="w3-btn w3-black"> Yes</a> <!--adds 1 to anxiety count when clicked and goes to page three-->
+        <a href="#three"  onclick="stressAdd();" class="w3-btn w3-black">No</a> <!--adds 1 to stress count when clicked and goes to page three-->
+ </div> <!--divides page-->
+
+		
+	</div> <!--divides page-->
+</div> <!--divides page-->
+
+<div class="page" id="three"> <!--new page for question 3-->
+	<div class="w3-container w3-flat-carrot"> <!--orange header box-->
+		<h1>Question 3</h1> <!--display heading-->
+	</div> <!--end of header-->
+	
+	<div id="content" class="w3-container"> <!--white background for page-->
+	<p>Do you mainly experience stress/anxiety due to external events or is it a constant issue?</p> <!--question text on white page-->    
+	<a href="#four"  onclick="stressAdd();" class="w3-btn w3-black"> External</a> <!--adds 1 to stress count when clicked and goes to page four-->
+        <a href="#four"  onclick="anxietyAdd();" class="w3-btn w3-black">Constant</a> <!--adds 1 to anxiety count when clicked and goes to page four-->
+ </div> <!--divides page-->
+
+		
+	</div> <!--divides page-->
+</div>	<!--divides page-->
+	
+<div class="page" id="four"> <!--new page for question 4-->
+	<div class="w3-container w3-flat-carrot"> <!--orange header box-->
+		<h1>Question 4</h1> <!--display heading-->
+	</div> <!--end of header-->
+	
+	<div id="content" class="w3-container"> <!--white background for page-->
+	<p>Are attempts to calm down using techniques such as deep breathing and distraction often successful in response to your stress/anxiety?</p> <!--question text on white page-->    
+	<a href="#five"  onclick="stressAdd();" class="w3-btn w3-black"> Yes</a> <!--adds 1 to stress count when clicked and goes to page five-->
+        <a href="#five"  onclick="anxietyAdd();" class="w3-btn w3-black">No</a> <!--adds 1 to anxiety count when clicked and goes to page five-->
+ </div> <!--divides page-->
+
+		
+	</div> <!--divides page-->
+</div> <!--divides page-->	
+	
+<div class="page" id="five"> <!--new page for results-->
+	
+	<div class="w3-container w3-flat-carrot"> <!--orange header box-->
+
+	<h1>Results</h1> <!--display heading-->
+		
+	</div> <!--end of header-->
+	
+<div id="content" class="w3-container"> <!--white background for page-->
+     
+	<p id="resultsopen">Results</p> <!--calls variable and displays text-->
+
+	<a onclick="percentageResult();" class="w3-btn w3-black"> See your results</a> <!--button displays percentage result when clicked-->
+
+	</div> <!--added dividing line-->
+</div> <!--divides page-->
+
+	
+<footer class="w3-bottom w3-container w3-flat-carrot"> <!--footer is orange-->
+	<p>DIY!</p> <!--text is displayed in footer-->
+</footer> <!--footer created-->	   
+
+   </body> <!--end of body text-->
+
+</html> <!--code is HTML-->
